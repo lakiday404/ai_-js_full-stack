@@ -4,3 +4,4 @@
 4. git add . //git 
 5. 不小心把agent放进去怎么办
 6. git commit -m ' 第一次提交 '
+7. git push origin master
