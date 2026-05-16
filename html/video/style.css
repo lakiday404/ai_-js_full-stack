@@ -1,0 +1,40 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    background: #4c4c4c url('https://unsplash.it/1500/900?image=1021');
+    /* bgs */
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+.wrapper{
+    display: flex;
+    width: 850px;
+}
+.video{
+    width: 760px;
+    height: 430px;
+
+}
+.speed{
+    flex:1;/*因为父容器是flex布局，又因为 video 指明要765px的宽度所以 speed 设置成 flex 为1会占满剩余空间 */
+    background: #fff;
+    border-radius: 50px;/*px大于50则椭圆不变，%大于50则变成圆形*/
+    margin: 10px;
+    overflow: hidden;
+
+}
+.speed-bar{
+    width: 100%;
+    height: 16.3%;
+    background: linear-gradient(to bottom, #171717 0%, #ffffff 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+}

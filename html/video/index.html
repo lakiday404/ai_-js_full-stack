@@ -1,0 +1,36 @@
+<!DOCTYPE html>  
+<!-- 声明文档类型为html  -->
+<html lang="en">       
+<!-- 声明文档为英文 -->
+<head>
+    <meta charset="UTF-8">
+    <!-- 声明解码方式utf-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 声明视口为设备宽度，初始缩放比例为1.0 -->
+    <title>视频倍速播放</title>
+    <!-- 一般在title下面来 引入css文件 -->
+     <!-- ./表示在当前目录下寻找 -->
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+
+<body>
+    <!-- div 容器元素,也是一种标签 -->
+     <!-- class id 都是取名 -->
+    <div class="wrapper">
+        <!-- video标签要带上controls属性，否则视频不会播放 -->
+        <video class="video" src="https://media.w3.org/2010/05/sintel/trailer.mp4" controls></video>
+
+        <!-- 滑块 -->
+         <div class="speed">
+            <div class="speed-bar">1x</div>
+
+         </div>
+
+    </div>
+
+    <!-- 引入js文件，习惯性在body闭标签前写 -->
+    <script src="./index.js"></script>  
+</body>
+</html>

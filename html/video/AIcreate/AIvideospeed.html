@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频倍数播放 Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        video {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+        }
+        
+        .speed-control {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .current-speed {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .speed-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .speed-btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .speed-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .speed-btn.active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            transform: scale(1.05);
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .control-btn {
+            padding: 15px 40px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .play-btn {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+        
+        .pause-btn {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+            color: white;
+        }
+        
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .progress-container {
+            margin-top: 20px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        
+        .time-display {
+            text-align: center;
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .tips {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f0f4ff;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .tips h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .tips p {
+            color: #555;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 视频倍数播放 Demo</h1>
+        
+        <div class="video-wrapper">
+            <video id="videoPlayer" controls>
+                <!-- 这里替换为你的视频地址 -->
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                您的浏览器不支持视频播放
+            </video>
+        </div>
+        
+        <div class="speed-control">
+            <div class="current-speed">
+                当前速度: <span id="speedValue">1x</span>
+            </div>
+            <div class="speed-buttons">
+                <button class="speed-btn" data-speed="0.5">0.5x</button>
+                <button class="speed-btn active" data-speed="1">1x</button>
+                <button class="speed-btn" data-speed="1.5">1.5x</button>
+                <button class="speed-btn" data-speed="2">2x</button>
+                <button class="speed-btn" data-speed="3">3x</button>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="control-btn play-btn" id="playBtn">播放</button>
+            <button class="control-btn pause-btn" id="pauseBtn">暂停</button>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="time-display">
+                <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+            </div>
+        </div>
+        
+        <div class="tips">
+            <h3>💡 使用说明</h3>
+            <p>
+                • 点击速度按钮可立即切换播放速度<br>
+                • 0.5x = 慢放，1x = 正常，2x = 倍速<br>
+                • 可拖动进度条或点击进度条跳转到指定位置<br>
+                • 视频源可替换为自己的视频地址
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // 获取DOM元素
+        const video = document.getElementById('videoPlayer');
+        const speedButtons = document.querySelectorAll('.speed-btn');
+        const speedValue = document.getElementById('speedValue');
+        const playBtn = document.getElementById('playBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const progressBar = document.getElementById('progressBar');
+        const progressFill = document.getElementById('progressFill');
+        const currentTimeEl = document.getElementById('currentTime');
+        const durationEl = document.getElementById('duration');
+
+        // 初始化
+        let currentSpeed = 1;
+        
+        // 速度按钮点击事件
+        speedButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 移除所有按钮的 active 类
+                speedButtons.forEach(b => b.classList.remove('active'));
+                // 给当前按钮添加 active 类
+                this.classList.add('active');
+                
+                // 获取速度值并设置
+                const speed = parseFloat(this.getAttribute('data-speed'));
+                video.playbackRate = speed;
+                currentSpeed = speed;
+                speedValue.textContent = speed + 'x';
+            });
+        });
+        
+        // 播放按钮
+        playBtn.addEventListener('click', function() {
+            video.play();
+        });
+        
+        // 暂停按钮
+        pauseBtn.addEventListener('click', function() {
+            video.pause();
+        });
+        
+        // 视频加载完成后更新总时长
+        video.addEventListener('loadedmetadata', function() {
+            durationEl.textContent = formatTime(video.duration);
+        });
+        
+        // 实时更新进度条
+        video.addEventListener('timeupdate', function() {
+            const percentage = (video.currentTime / video.duration) * 100;
+            progressFill.style.width = percentage + '%';
+            currentTimeEl.textContent = formatTime(video.currentTime);
+        });
+        
+        // 点击进度条跳转
+        progressBar.addEventListener('click', function(e) {
+            const rect = progressBar.getBoundingClientRect();
+            const percentage = (e.clientX - rect.left) / rect.width;
+            video.currentTime = percentage * video.duration;
+        });
+        
+        // 格式化时间为分:秒
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+        
+        // 键盘快捷键支持
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case ' ':
+                    e.preventDefault();
+                    if (video.paused) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
+                    break;
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    const speed = parseFloat(e.key) + 0.5;
+                    if (speed >= 0.5 && speed <= 3) {
+                        speedButtons.forEach(btn => {
+                            if (parseFloat(btn.getAttribute('data-speed')) === speed) {
+                                btn.click();
+                            }
+                        });
+                    }
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>
