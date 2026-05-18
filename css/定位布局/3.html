@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            position: relative;
+        }
+        .wrap{
+            width: 50px;
+            height: 50px;
+            background-color: #ee13c2;
+            /* margin-left: 125px; */
+
+            /* absolute绝对定位也要参照 要参照body的位置 */
+            position: absolute;
+            /* absolute会使其脱离文档流，不遵守从上往下从左往右。 */
+
+
+            /* left: 125px;
+            top:  125px; */
+            /* 相对父容器来说 */
+            left: 50%;
+            top: 50%;
+
+            /* translate里面的百分比，以自身宽高做参考 */
+            transform: translate(-50%,-50%);
+
+
+            
+
+        }
+        
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="box">
+        <div class="wrap">hello</div>
+        <div class="name">帆帆</div>
+    </div>
+    
+</body>
+</html>

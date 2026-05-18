@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            /* vh view height 屏幕可视区域的高度,200代表屏幕可视高度的两倍 */
+            height: 300vh;
+            width: 200vw;
+
+        }
+        .box{
+            width: 500px;
+            height: 500px;
+            background-color: rosybrown;
+            /* position: relative; */
+            position: absolute;
+
+            z-index: 1;
+            
+
+            /* position: sticky;
+            left :0; */
+        }
+        .box2{
+            height: 100px;
+            background-color: blue;
+            /* 位置粘性  */
+            position: sticky;
+            top:0;
+            /* z-index: 0; */
+
+        }
+        .wrap{
+            width: 50px;
+            height: 50px;
+            background-color: blueviolet;
+            position: sticky;
+            top:0px;
+            /* 设置层级 */
+            /* z-index: 1; */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="wrap"></div>
+    </div>
+    <div class="box2"></div>
+    
+
+</body>
+</html>
