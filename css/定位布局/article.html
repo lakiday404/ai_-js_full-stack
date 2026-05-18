@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>粘性定位演示</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        body{
+            height: 300vh;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: burlywood;
+            position: relative;
+        }
+        .box2{
+            width: 200px;
+            height: 100px;
+            background-color: blue;
+            position: sticky;
+            top: 0;
+        }
+        .sticky-box {
+            width: 100px;
+            height: 50px;
+            background-color: #ee13c2;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="sticky-box">相对定位 - 粉色块</div>
+    <div class="box">相对定位 - 棕色块</div>
+    <div class="box2">粘性定位 - 蓝色块</div>
+</body>
+</html>
