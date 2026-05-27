@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">获取歌手信息</button>
+    <ul id="list">
+        <!-- <li>许嵩</li> -->
+    </ul>
+
+
+    <script>
+         function renderList(arr){
+        const ul = document.getElementById('list')
+        for(let i = 0;i < arr.length; i++){
+            const item = arr[i]
+            //往 ul 中植入一个 li
+             const li = document.createElement('li')
+             li.innerText = item.name
+             ul.appendChild(li)
+
+        }
+    }
+        
+        let btn = document.getElementById('btn')
+        btn.addEventListener('click',()=>{
+            fetch('https://mock.mengxuegu.com/mock/66585c4db462b81cb3916d3e/songer/songer',{
+                method: "GET"
+            })
+            .then((res) =>{
+                return res.json()
+            })
+            .then((data)=>{
+                renderList(data.data)
+            })
+        })
+       
+
+    </script>
+</body>
+</html>

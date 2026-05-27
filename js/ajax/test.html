@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="username">
+  <input type="text" id="password">
+  <button id="btn">登录</button>
+  <script>
+     // 'http://192.168.31.21:3000/login?username=${你的账号}&password=${你的密码}'
+    //   function renderList(arr){
+    //     const ul = document.getElementById('list')
+    //     if (!arr) return
+    //     for(let i = 0;i < arr.length; i++){
+    //         const item = arr[i]
+    //          const li = document.createElement('li')
+    //          li.innerText = item.name
+    //          ul.appendChild(li)
+
+    //     }
+    // }
+
+     let input1 = document.getElementById('username')
+     let input2 = document.getElementById('password')
+     let btn = document.getElementById('btn')
+     btn.addEventListener('click',()=>{
+        fetch(`http://192.168.31.21:3000/login?username=${input1.value}&password=${input2.value}`,{
+            method: "GET"
+        })
+        .then((res)=>{
+            return res.json()
+        })
+        .then((data) => {
+            console.log('后端返回的数据:', data)
+            // renderList(data.data || data)
+        })
+        .catch((err) => {
+            console.error('请求失败:', err)
+        })
+     })
+
+ 
+  </script>
+</body>
+</html>
