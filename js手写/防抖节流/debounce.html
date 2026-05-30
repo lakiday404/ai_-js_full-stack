@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <button id="btn">submit</button>
+
+
+    <script>
+        // 防抖
+
+        // let timer;    // 封装一个模块，不要用全局变量来解决
+        let btn = document.getElementById('btn')
+        btn.addEventListener('click', debounce(handle, 1000))
+        function handle() {
+            console.log('submit')
+        }
+        // 高阶函数，接受的参数是个函数体的函数就是高阶函数
+        function debounce(fn,delay){ 
+            let timer; 
+            return function(e){
+                clearTimeout(timer)
+                timer = setTimeout(() => {
+                    fn.call(this,e)
+                },delay)
+            }
+        }
+        // function debounce(fn, delay) {  // 高阶函数
+        //     let timer;
+        //     return function (e) {  // foo
+        //         // this
+        //         let that = this
+        //         clearTimeout(timer)
+        //         timer = setTimeout(function () {
+        //             fn.call(that, e)
+        //         }, delay)
+        //     }
+        // }
+    </script>
+</body>
+
+</html>
