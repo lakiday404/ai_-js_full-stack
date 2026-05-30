@@ -1,35 +1,35 @@
-function xq(){
+function xq() {
     // Promise 内部拥有一个 状态 `state`，其初始值为 `state = pending`
     // 只要给 Promise 
-    return new Promise((resolve,reject)=>{   // reject 就是失败, 搭配 catch捕获错误
-        setTimeout(()=>{
-        console.log('success')
-        resolve()
-    },2000)
+    return new Promise((resolve, reject) => {   // reject 就是失败, 搭配 catch捕获错误
+        setTimeout(() => {
+            console.log('success')
+            resolve()
+        }, 2000)
     })
 }
-function marry(){
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
+function marry() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
             console.log('get married')
             resolve()
-        },1000)
+        }, 1000)
     })
 }
-function baby(){
+function baby() {
     console.log('get a baby');
 }
 // 对象里的隐式原型，函数里的显式原型别忘了
-// xq().then(()=>{
-//     marry().then(()=>{
+// xq().then(() => {
+//     marry().then(() => {
 //         baby()
 //     })
 // })
 
 // 链式调用
-xq().then(()=>{
+xq().then(() => {
     return marry()
-}).then(()=>{
+}).then(() => {
     baby()
 })
 // 由于 xq().then() 最先执行
@@ -39,19 +39,19 @@ xq().then(()=>{
 // 4. 将 then 存起来的函数在 resolve() 里触发掉，
 
 
-// function xq(){
+// function xq() {
 //     // Promise 内部拥有一个 状态 `state`，其初始值为 `state = pending`
-//     // 只要给 Promise 
-//     return new Promise((resolve,reject)=>{   // reject 就是失败, 搭配 catch捕获错误
-//         setTimeout(()=>{
-//         console.log('fail');
-//         reject('a')
-//     },2000)
+//     // 只要给 Promise
+//     return new Promise((resolve, reject) => {   // reject 就是失败, 搭配 catch捕获错误
+//         setTimeout(() => {
+//             console.log('fail');
+//             reject('a')
+//         }, 2000)
 //     })
 // }
-// xq().then(()=>{
+// xq().then(() => {
 //     marry()
 // })
-// .catch((err)=>{
-//     console.log(err,'pity')
-// })
+//     .catch((err) => {
+//         console.log(err, 'pity')
+//     })
