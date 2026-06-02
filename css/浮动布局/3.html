@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .item{
+      width: 200px;
+      height: 100px;
+    }
+    .item:nth-child(1) {
+      background-color: #ed4949;
+      float: left;
+    }
+    .item:nth-child(2) {
+      background-color: #dfef26;
+      float: left;
+    }
+    .item:nth-child(3) {
+      background-color: #5df13c;
+      float: left;
+    }
+    /* ul{
+       height: 200px;
+    } */
+    /* .clear{
+        clear:left;
+    } */
+
+
+    /* 伪元素 推荐 */
+    /* ul::after{
+        content: '@';
+        display: block;
+        clear:both
+    } */
+    /* ul::before{
+        content:'@'
+    } */
+
+
+
+    /* 给后面的元素设置clear 不推荐 */
+     /* h2{
+        clear:both;
+     } */
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="item">1</li>
+    <li class="item">2</li>
+    <li class="item">3</li>
+    <!-- <div class = "clear"></div> -->
+  </ul>
+
+  <h2>hello world</h2>
+  
+
+
+</body>
+</html>

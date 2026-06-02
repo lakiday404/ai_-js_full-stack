@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .item{
+      width: 200px;
+      height: 100px;
+    }
+    .item:nth-child(1) {
+      background-color: #ed4949;
+      float: left;
+    }
+    .item:nth-child(2) {
+      background-color: #dfef26;
+      float: left;
+
+      
+    }
+    .item:nth-child(3) {
+      background-color: #5df13c;
+      float: left;
+    }
+    ul{
+        /* BFC 容器会计算里面浮动的元素的高度，因此最推荐用这种方式，将父容器变为BFC容器 */
+        overflow: hidden;
+        /* display: inline-block; */
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="item">1</li>
+    <li class="item">2</li>
+    <li class="item">3</li>
+    <!-- <div class = "clear"></div> -->
+  </ul>
+
+  <h2>hello world</h2>
+  
+
+
+</body>
+</html>

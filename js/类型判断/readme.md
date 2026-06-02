@@ -1,6 +1,6 @@
 # JavaScript 类型判断
 ## 前情提要，快速回忆一遍 js 类型
-跳转上文： 带你快速回忆 js 类型
+跳转上文：[万物皆对象？带你梳理JS原型及其查找链机制](https://juejin.cn/post/7642251240038842410) 带你快速回忆 js 类型
 推荐阅读 https://es5.github.io/#x15.2.4.2
 1. 引用类型: Array,function,object,date
 2. 原始类型: number,bigint,string,symbol,boolean,undefined,null
@@ -71,3 +71,12 @@ When the toString method is called, the following steps are taken:
 const obj ={
 
 }
+
+## Array.isArray()
+数组天生构造了一个函数，专门判断是否为数组
+`Array.isArray()` 挂在了自己这个函数上，因此其实例对象无法访问，仅仅它自己可以访问
+例如:
+```
+const arr = []
+arr.isArray // 就不行 
+```
