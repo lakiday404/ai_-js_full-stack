@@ -1,5 +1,6 @@
 const str = 'juejin'
 
+// 手搓一个 reverse() 实现颠倒输出原字符串
 // function reverse(s){
 //     let newStr = ''
 //     for(let i = 0;i < s.length;i++){
@@ -13,8 +14,8 @@ const str = 'juejin'
 // split(e) -> {`ju`,`jin`}
 
 
-
-// 放空字符(没有空格)
+// split 可以把字符串变成一个数组
+// split 里面放空字符(没有空格)
 const arr = str.split('').reverse
 
 // const newStr = arr.toString() // 这个方法会有逗号 
