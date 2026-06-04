@@ -33,6 +33,8 @@ http://es5.github.io/#x15.5.1.1
 ### toString()
 x 是个 obj{}
 - String(x) -> ToString(x) -> ToPrimitive(x,String)
+
+
 1. {}.toString()   // 返回 "[object Object]"
 2. [].toString()   // 返回数组内部的元素以逗号拼接得到的字符串
 3. xx.toString // 返回 "xx"
@@ -41,7 +43,7 @@ x 是个 obj{}
 console.log(String({a:1}));
 ToPrimitive({a:1},String)
 1. 调用{a:1}.toString()
-2. 如果得到一个 原始值 primitive value，则返回
+2. 如果得到一个 原始值 primitive value，则返回  // `[object Object]`
 3. 调用 {a:1}.valueOf()，如果得到一个 原始值，则返回
 4. 否则报错
 
