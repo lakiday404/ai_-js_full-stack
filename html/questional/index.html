@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/index.css">
+
+</head>
+<body>
+    <div class = "home">
+        <div class = "logo"><img src="./imges/logo.png" alt=""></div>
+        <div class="title">
+            <div class = "title-main">欢迎参与问卷调查</div>
+            <div class="title-sub">(不参与的是 gay)</div>
+        </div>
+        <div class="btn">开始问卷
+            <!-- <a href="http://127.0.0.1:5500/html/questional/question.html">开始问卷</a> -->
+             <!-- 这样写只要把a标签的按钮样式改一改就可以了，就不必用js实现 -->
+        </div>
+
+
+    </div>
+    
+<script>
+    const btn = document.querySelector('.btn')
+    
+    btn.addEventListener('click',()=>{
+        location.href = 'http://127.0.0.1:5500/html/questional/question.html'
+    })
+</script>
+</body>
+</html>

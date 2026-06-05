@@ -1,22 +1,22 @@
 let obj = {
     age: 18,
     name: `nange`,
-    like:{
-        n:'valorant',
-        m:'deltaforce',
-        o : {
-            a:'xijiao'
+    like: {
+        n: 'BangDream',
+        m: 'MyGo',
+        o: {
+            a: 'Soyo'
         }
     }
 }
 
-function deepCopy(obj){    
-    let res = {}
-    for(let key in obj){
-        if(obj.hasOwnProperty(key)){
-            if(typeof(obj[key]) == 'object' && obj[key] != null){
+function deepCopy(obj) {
+    let res = Array.isArray(obj) ? [] : {}
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            if (typeof (obj[key]) == 'object' && obj[key] != null) {
                 res[key] = deepCopy(obj[key])
-            }else{
+            } else {
                 res[key] = obj[key]
             }
         }
@@ -25,5 +25,5 @@ function deepCopy(obj){
     return res
 }
 let oo = deepCopy(obj)
-obj.like.o.a = 'anmo'
+obj.like.o.a = 'anno'
 console.log(oo)
