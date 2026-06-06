@@ -135,7 +135,7 @@ submit.addEventListener('click', () => {
     clacScore()
 
     // 跳转页面
-    location.href="./result.html?score=${score}"
+    location.href = `./result.html?score=${score}`
 
 })
 
