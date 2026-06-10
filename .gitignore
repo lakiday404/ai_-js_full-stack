@@ -1,3 +1,4 @@
 # 本地 IDE 项目规则（不提交）
 .trae/rules/
 .cursor/rules/
+/.claude/
