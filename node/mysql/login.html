@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>登录页面</h2>
+    <div class="login">
+        <input type="text" class = "username">
+        <input type="text" class="password">
+        <button>登录</button>
+    </div>
+
+    <script>
+        const btn = document.querySelector('button')
+        btn.onclick = async function(){
+            // console.log('hello');
+            const username = document.querySelector('.username').value
+            const password = document.querySelector('.password').value
+
+            if(!username||!password){
+                alert('账号或密码不能为空')
+                return
+            }
+            const res = await fetch(`http://localhost:3000/login?username=${username}&password=${password}`)
+            console.log(res); // 会得到一个promise。状态为pendding
+        }
+    </script>
+</body>
+</html>
